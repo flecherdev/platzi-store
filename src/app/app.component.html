@@ -6,6 +6,13 @@
   Hola Ezequiel !!!
 </div>
 
+<div [ngSwitch]="title">
+  <p *ngSwitchCase="'ezequiel'">este es ezequiel</p>
+  <p *ngSwitchCase="'pepe'">este es pepe</p>
+  <p *ngSwitchCase="'juan'">este es juan</p>
+  <p *ngSwitchDefault>no hay match</p>
+</div>
+
 <button (click)="addItem()">Add Item</button>
 
 <ul>
