@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DemoRoutingModule } from './demo-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DemoComponent } from './components/demo/demo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DemoComponent } from './components/demo/demo.component';
     imports: [
         CommonModule,
         DemoRoutingModule,
-        SharedModule
+        SharedModule,
+        FormsModule
     ]
 })
 export class DemoModule { }
