@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../../product.model';
+import { HttpClient } from '@angular/common/http';
+import { Product } from '../../models/product.model';
+
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  products: Product[] = [
-    { id: '1', image: 'assets/images/camiseta.png', title: 'Camiseta', price: 500, description: 'very good' },
-    { id: '2', image: 'assets/images/hoodie.png', title: 'Hoodie', price: 600, description: 'very good' },
-    { id: '3', image: 'assets/images/mug.png', title: 'Mug', price: 300, description: 'very good' },
-    { id: '4', image: 'assets/images/pin.png', title: 'Pin', price: 400, description: 'very good' },
-    { id: '5', image: 'assets/images/stickers1.png', title: 'Stickers1', price: 100, description: 'very good' },
-    { id: '6', image: 'assets/images/stickers2.png', title: 'Stickers2',  price: 200, description: 'very good' }
-  ];
-
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getAllProducts() {
-    return this.products;
+    return this.http.get<Product[]>(`${environment.url_api}/api/products`);
   }
 
-  getProducts(id) {
-    return this.products.find(item => id === item.id);
+  getProducts(id: string) {
+    return this.http.get<Product>(`${environment.url_api}/api/products/${id}`);
+  }
+
+  createProduct(product: Product) {
+    return this.http.post(`${environment.url_api}/api/products`, product);
+  }
+
+  updateProduct(id: string, changes: Partial<Product>) {
+    return this.http.put(`${environment.url_api}/api/products/${id}`, changes);
+  }
+
+  deleteProduct(id: string) {
+    return this.http.delete(`${environment.url_api}/api/products/${id}`);
   }
 }
