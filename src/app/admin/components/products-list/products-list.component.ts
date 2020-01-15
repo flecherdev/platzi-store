@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from '../../../core/services/products/products.service';
-import { Product } from '../../../core/models/product';
+import { Product } from '../../../core/models/product.model';
+import { MatTableDataSource, MatTable } from '@angular/material';
+
 
 @Component({
   selector: 'app-products-list',
@@ -9,8 +11,11 @@ import { Product } from '../../../core/models/product';
 })
 export class ProductsListComponent implements OnInit {
 
-  products = [];
+  @ViewChild('producTable', {static: false}) table: MatTable<Product>;
+  products: Product[] = [];
   displayedColumns: string[] = ['id', 'title', 'price', 'actions'];
+  // dataSource = new MatTableDataSource<Product>(this.products);
+
 
   constructor(
     private productsService: ProductsService
@@ -21,16 +26,17 @@ export class ProductsListComponent implements OnInit {
   }
 
   fetchProducts() {
-    this.productsService.getAllProducts().subscribe(products => {
-      this.products = products;
+    this.productsService.getAllProducts().subscribe((products: Product[]) => {
+       this.products = products;
+       this.table.dataSource = this.products;
     });
   }
 
-  deleteProducts(id: string) {
-    this.productsService.deleteProduct(id).subscribe(product => {
-      console.log(product);
-      // const data = this.products.find( (data: Product) => return data._id !== id ? data: {});
-      this.fetchProducts();
+  deleteProducts(productDelete: Product) {
+    this.productsService.deleteProduct(productDelete._id).subscribe(() => {
+      this.products = this.products.filter((product: Product) => product._id !== productDelete._id);
+      this.table.dataSource = this.products;
+      this.table.renderRows();
     });
   }
 
