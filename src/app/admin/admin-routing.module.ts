@@ -6,6 +6,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { FormProductComponent } from './components/form-product/form-product.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 const routes: Routes = [
   { path: '', component: NavComponent,
@@ -13,7 +15,9 @@ const routes: Routes = [
       { path: 'create', component: ProductFormComponent },
       { path: 'tabla', component: TablaComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'products', component: ProductsListComponent }
+      { path: 'products', component: ProductsListComponent },
+      { path: 'products/create', component: FormProductComponent },
+      { path: 'products/edit/:id', component: ProductEditComponent }
     ]
   },
 ];
