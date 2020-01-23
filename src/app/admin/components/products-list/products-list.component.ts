@@ -16,7 +16,6 @@ export class ProductsListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'price', 'actions'];
   // dataSource = new MatTableDataSource<Product>(this.products);
 
-
   constructor(
     private productsService: ProductsService
   ) { }
