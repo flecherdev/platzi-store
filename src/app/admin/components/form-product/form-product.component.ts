@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../../../core/services/products/products.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { MyValidators } from '../../../utils/validators';
+
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-product',
@@ -12,11 +16,14 @@ import { MyValidators } from '../../../utils/validators';
 export class FormProductComponent implements OnInit {
 
   form: FormGroup;
+  // miFile: File;
+  image$: Observable<any>;
 
   constructor(
     private formBuilder: FormBuilder,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private storage: AngularFireStorage
   ) {
     this.buildForm();
   }
@@ -34,6 +41,25 @@ export class FormProductComponent implements OnInit {
           this.router.navigate(['./admin/products']);
         });
     }
+  }
+
+  uploadFile(event) {
+    const file = event.target.files[0];
+    const name = file.name;
+    const fileRef = this.storage.ref(name);
+    const task = this.storage.upload(name, file);
+
+    task.snapshotChanges()
+    .pipe(
+      finalize(() => {
+        this.image$ = fileRef.getDownloadURL();
+        this.image$.subscribe(url => {
+          console.log(url);
+          this.form.get('image').setValue(url);
+        });
+      })
+    )
+    .subscribe();
   }
 
   private buildForm() {
