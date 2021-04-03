@@ -11,6 +11,7 @@ import { Product } from '../../../core/models/product.model';
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
+  loading: boolean = true;
 
   constructor(
     private productsService: ProductsService
@@ -28,6 +29,7 @@ export class ProductsComponent implements OnInit {
     this.productsService.getAllProducts().subscribe(products => {
       console.log(products);
       this.products = products;
+      this.loading = false;
     });
   }
 

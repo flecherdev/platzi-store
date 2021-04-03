@@ -19,6 +19,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -42,7 +43,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatGridListModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
@@ -61,7 +63,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatGridListModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule { }
