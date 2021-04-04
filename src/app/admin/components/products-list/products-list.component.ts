@@ -11,7 +11,7 @@ import { MatTableDataSource, MatTable } from '@angular/material';
 })
 export class ProductsListComponent implements OnInit {
 
-  @ViewChild('producTable', {static: false}) table: MatTable<Product>;
+  @ViewChild('producTable') table: MatTable<Product>;
   products: Product[] = [];
   displayedColumns: string[] = ['id', 'title', 'price', 'actions'];
   // dataSource = new MatTableDataSource<Product>(this.products);
