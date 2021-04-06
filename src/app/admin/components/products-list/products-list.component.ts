@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from '../../../core/services/products/products.service';
 import { Product } from '../../../core/models/product.model';
-import { MatTableDataSource, MatTable } from '@angular/material';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 
 
 @Component({
