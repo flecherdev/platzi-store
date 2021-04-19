@@ -5,9 +5,12 @@ $primary: mat-palette($mat-indigo);
 footer {
   padding: 50px 0px;
   margin-top: 20px;
+  position: relative;
+  bottom: 0;
   background-color: mat-color($primary);
   .box {
     h3 {
+      margin-left: 5px;
       color: white;
     }
     input{
@@ -15,10 +18,12 @@ footer {
     }
     ul {
       list-style: none;
-      margin: 0px;
+      margin: 10px;
       padding: 0px;
       li {
         margin: 10px 0px;
+        margin-left: 10px;
+        margin-right: 10px;
         a {
           text-decoration: none;
           color: white;
