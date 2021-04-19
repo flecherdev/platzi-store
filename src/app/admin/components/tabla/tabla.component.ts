@@ -10,9 +10,9 @@ import { TablaDataSource, TablaItem } from './tabla-datasource';
   styleUrls: ['./tabla.component.scss']
 })
 export class TablaComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<TablaItem>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<TablaItem>;
   dataSource: TablaDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */

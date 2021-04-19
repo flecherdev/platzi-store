@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from '../../../core/services/products/products.service';
 import { Product } from '../../../core/models/product.model';
-import { MatTableDataSource, MatTable } from '@angular/material';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { MatTableDataSource, MatTable } from '@angular/material';
 })
 export class ProductsListComponent implements OnInit {
 
-  @ViewChild('producTable', {static: false}) table: MatTable<Product>;
+  @ViewChild('producTable') table: MatTable<Product>;
   products: Product[] = [];
   displayedColumns: string[] = ['id', 'title', 'price', 'actions'];
   // dataSource = new MatTableDataSource<Product>(this.products);
