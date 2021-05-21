@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-
-import { DemoComponent } from './demo/components/demo/demo.component';
-import { PageNotFoundComponent } from './page-not-found/components/page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout.component';
 
 import { AdminGuard } from './admin.guard';
